@@ -103,7 +103,7 @@ class RpcThreadingConsumer(IConsumer):
             else:
                 threads = []
                 on_message_callback = functools.partial(self._on_message, args=[self._connection, threads])
-                self._channel.basic_consumer(self._queue, on_message_callback)
+                self._channel.basic_consume(self._queue, on_message_callback)
                 
                 print("[.] START AWAITING......")
                 self._channel.start_consuming()
